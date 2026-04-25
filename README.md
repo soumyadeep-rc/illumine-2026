@@ -1,2 +1,1 @@
-This is the repository for the Illumine 2026 event scheduled for 22nd December 2026.
-Our aim is to make a special website to mark this auspicious event of silver jubilee of Department Of Information Technology.
+This is the repository for the Illumine 2026 event scheduled for 22nd December 2026. Our aim is to make a special website to mark this auspicious event of silver jubilee of Department Of Information Technology.

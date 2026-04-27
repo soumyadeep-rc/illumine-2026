@@ -4,6 +4,13 @@ This document defines the branching strategy, roles, and workflow to ensure smoo
 
 ---
 
+## 🎨 Design Resources
+
+- **Figma Design:** [Illumine 26 1st draft](https://www.figma.com/design/jici7gUAt3WRdFvBYtCTH0/illumine--26-1st-draft?t=4f9BBUg3ZSmyrxJa-0)
+- **Note:** Please send a request for access to view the design if you don't have it already.
+
+---
+
 ## 🌳 Branch Architecture
 
 ### Core Branches

@@ -1,26 +1,162 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* -----------------------------------------------------------------------------
+   Illumine 2026 — design tokens
+   Sci-fi / HUD / cyberpunk theme. Black bg, electric-indigo accent.
+   --------------------------------------------------------------------------- */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts (defined in lib/fonts.ts via next/font, exposed as CSS vars). */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+
+  /* Surfaces */
+  --color-deep: #000000;
+  --color-base: #050507;
+  --color-surface: #0b0c12;
+  --color-surface-2: #11131c;
+
+  /* Foreground (text on dark) */
+  --color-ink: #ffffff;
+  --color-muted: #a8b0c8;
+  --color-dim: #6b7591;
+  --color-faint: #3d4359;
+
+  /* Brand: electric indigo (the LOG IN / EVENTS button blue). */
+  --color-accent: #5b6cff;
+  --color-accent-hi: #7c8aff;
+  --color-accent-lo: #3a4ad8;
+
+  /* HUD lines */
+  --color-grid: rgba(255, 255, 255, 0.05);
+  --color-grid-strong: rgba(255, 255, 255, 0.1);
+  --color-rule: rgba(255, 255, 255, 0.08);
+
+  /* Animations */
+  --animate-radar-spin: radar-spin 24s linear infinite;
+  --animate-cross-pulse: cross-pulse 3s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes radar-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
+@keyframes cross-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 18px rgba(91, 108, 255, 0.45);
+  }
+  50% {
+    text-shadow:
+      0 0 28px rgba(91, 108, 255, 0.55),
+      0 0 4px rgba(91, 108, 255, 0.5);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  background: var(--color-deep);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* -----------------------------------------------------------------------------
+   Custom utilities
+   --------------------------------------------------------------------------- */
+
+/* Sliced button — chamfered top-left + bottom-right corners (matches design). */
+@utility clip-slash {
+  clip-path: polygon(
+    12px 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%,
+    0 12px
+  );
+}
+
+@utility clip-slash-sm {
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+/* HUD panel — small notches at the corners (cosmetic). */
+@utility clip-hud {
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px),
+    0 8px
+  );
+}
+
+/* Faint grid background for the hero plate. */
+@utility hud-grid {
+  background-image:
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Glow text effect for the countdown. */
+@utility text-glow {
+  text-shadow:
+    0 0 18px rgba(91, 108, 255, 0.5),
+    0 0 2px rgba(91, 108, 255, 0.6);
+}
+
+/* Honour reduced-motion: disable looping decorative animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

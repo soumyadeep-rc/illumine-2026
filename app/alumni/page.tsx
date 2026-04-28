@@ -1,4 +1,5 @@
 import ComingSoon from '@/components/ui/ComingSoon';
+import React from 'react'
 
 /**
  * MODULE: Alumni Route (/alumni)
@@ -10,4 +11,11 @@ import ComingSoon from '@/components/ui/ComingSoon';
  */
 export default function Alumni() {
   return <ComingSoon />;
+
+  // Upstream UI
+  /*
+  return (
+      <div>page</div>
+  )
+  */
 }

@@ -1,4 +1,6 @@
 import ComingSoon from '@/components/ui/ComingSoon';
+import Image from "next/image";
+// import Hero from "./sections/Hero";
 
 /**
  * MODULE: Home Route (/)
@@ -10,4 +12,13 @@ import ComingSoon from '@/components/ui/ComingSoon';
  */
 export default function Home() {
   return <ComingSoon />;
+  
+  // Upstream UI
+  /*
+  return (
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <Hero />
+    </div>
+  );
+  */
 }

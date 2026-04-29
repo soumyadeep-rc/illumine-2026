@@ -1,3 +1,4 @@
+import AboutDepartment from '@/components/about/AboutDepartment';
 import ComingSoon from '@/components/ui/ComingSoon';
 
 /**
@@ -10,5 +11,5 @@ import ComingSoon from '@/components/ui/ComingSoon';
  */
 export default function About() {
 
-  return <ComingSoon />;
+  return <AboutDepartment/>;
 }

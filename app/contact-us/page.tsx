@@ -1,21 +1,13 @@
 import ComingSoon from '@/components/ui/ComingSoon';
-import React from 'react'
 
 /**
- * MODULE: Magazine Route (/magazine)
+ * MODULE: Contact Us Route (/contact-us)
  * 
  * DESCRIPTION:
- * This is the Magazine page for the Illumine 2026 application. 
+ * This is the Contact Us page for the Illumine 2026 application. 
  * Currently, this route is safely redirected to the modular <ComingSoon /> UI 
  * component while active development is underway.
  */
-export default function Magazine() {
+export default function ContactUs() {
   return <ComingSoon />;
-
-  // Upstream UI
-  /*
-  return (
-      <div>page</div>
-  )
-  */
 }

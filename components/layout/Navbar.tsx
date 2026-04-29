@@ -35,10 +35,10 @@ export default function Navbar() {
     <>
       <nav
         className={[
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'sticky top-0 left-0 right-0 z-50 transition-all duration-500',
           ttLakes.className,
           scrolled
-            ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(123,97,255,0.08)]'
+            ? 'bg-gradient-to-b from-white/80 dark:from-black/80 to-transparent backdrop-blur-md'
             : 'bg-transparent',
         ].join(' ')}
       >
@@ -51,7 +51,8 @@ export default function Navbar() {
           <Link href="/" className="flex-shrink-0 group flex flex-col">
             <span
               className={[
-                'text-[1.35rem] tracking-[0.22em] text-white',
+                'text-[1.35rem] tracking-[0.22em]',
+                'text-black dark:text-white',
                 'group-hover:text-[#7B61FF] transition-colors duration-300',
                 mechsuit.className,
               ].join(' ')}
@@ -75,7 +76,7 @@ export default function Navbar() {
                     'transition-all duration-300 rounded-sm',
                     isActive
                       ? 'bg-[#6265fe] text-white'
-                      : 'text-white/70 hover:text-white',
+                      : 'text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white',
                   ].join(' ')}
                 >
                   {!isActive && (
@@ -102,10 +103,10 @@ export default function Navbar() {
 
             <Link
               href="/signup"
-              className="group relative px-5 py-1.5 text-[11px] font-medium tracking-[0.15em] border border-white/50 text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF] transition-all duration-300"
+              className="group relative px-5 py-1.5 text-[11px] font-medium tracking-[0.15em] border border-black/50 dark:border-white/50 text-black dark:text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF] transition-all duration-300"
             >
-              <span className="absolute top-0.5 left-0.5 w-[3px] h-[3px] bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
-              <span className="absolute bottom-0.5 right-0.5 w-[3px] h-[3px] bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
+              <span className="absolute top-0.5 left-0.5 w-[3px] h-[3px] bg-black/30 dark:bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
+              <span className="absolute bottom-0.5 right-0.5 w-[3px] h-[3px] bg-black/30 dark:bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
               SIGN UP
             </Link>
           </div>
@@ -118,9 +119,9 @@ export default function Navbar() {
             aria-expanded={mobileOpen ? 'true' : 'false'}
             className="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
           >
-            <span className={['block h-px bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full rotate-45 translate-y-[6px]' : 'w-full'].join(' ')} />
-            <span className={['block h-px bg-white transition-all duration-300', mobileOpen ? 'opacity-0 w-0' : 'w-3/4'].join(' ')} />
-            <span className={['block h-px bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full -rotate-45 -translate-y-[6px]' : 'w-1/2'].join(' ')} />
+            <span className={['block h-px bg-black dark:bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full rotate-45 translate-y-[6px]' : 'w-full'].join(' ')} />
+            <span className={['block h-px bg-black dark:bg-white transition-all duration-300', mobileOpen ? 'opacity-0 w-0' : 'w-3/4'].join(' ')} />
+            <span className={['block h-px bg-black dark:bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full -rotate-45 -translate-y-[6px]' : 'w-1/2'].join(' ')} />
           </button>
 
         </div>
@@ -129,18 +130,18 @@ export default function Navbar() {
       {/* MOBILE MENU OVERLAY */}
       <div
         className={[
-          'fixed inset-0 z-40 transition-all duration-300 md:hidden',
+          'sticky inset-0 z-40 transition-all duration-300 md:hidden',
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
       >
         <div
-          className="absolute inset-0 bg-black/70 backdrop-blur-md"
+          className="absolute inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-md"
           onClick={() => setMobileOpen(false)}
         />
 
         <div
           className={[
-            'absolute top-16 left-0 right-0 bg-black/90 border-b border-white/10',
+            'absolute top-16 left-0 right-0 bg-white/90 dark:bg-black/90 border-b border-black/10 dark:border-white/10',
             'transition-transform duration-300',
             ttLakes.className,
             mobileOpen ? 'translate-y-0' : '-translate-y-2',
@@ -149,7 +150,7 @@ export default function Navbar() {
           <div className="h-px bg-gradient-to-r from-transparent via-[#7B61FF]/50 to-transparent" />
 
           <div className="px-6 py-6 flex flex-col gap-1">
-            <p className="text-[10px] tracking-[0.25em] text-[#555555] uppercase mb-3">
+            <p className="text-[10px] tracking-[0.25em] text-gray-500 uppercase mb-3">
               {'>> /root/nav_links'}
             </p>
 
@@ -164,12 +165,12 @@ export default function Navbar() {
                     setMobileOpen(false);
                   }}
                   className={[
-                    'flex items-center gap-3 py-3 border-b border-white/5',
+                    'flex items-center gap-3 py-3 border-b border-black/5 dark:border-white/5',
                     'text-sm tracking-[0.12em] transition-colors duration-200',
-                    isActive ? 'text-[#7B61FF]' : 'text-white/70 hover:text-white',
+                    isActive ? 'text-[#7B61FF]' : 'text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white',
                   ].join(' ')}
                 >
-                  <span className="text-[#444444] text-xs font-mono w-5">
+                  <span className="text-gray-400 text-xs font-mono w-5">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   {link.label}
@@ -183,21 +184,21 @@ export default function Navbar() {
             <div className="flex gap-3 mt-5">
               <Link
                 href="/login"
-                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium bg-[#6265fe] text-white rounded-sm hover:bg-[#7B61FF] transition-colors duration-300"
+                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium bg-[#6265fe] text-white rounded-sm hover:bg-[#7B61FF]"
               >
                 LOG IN
               </Link>
               <Link
                 href="/signup"
-                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium border border-white/40 text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF] transition-all duration-300"
+                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium border border-black/40 dark:border-white/40 text-black dark:text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF]"
               >
                 SIGN UP
               </Link>
             </div>
 
-            <div className="flex items-center gap-2 mt-5 pt-4 border-t border-white/5">
+            <div className="flex items-center gap-2 mt-5 pt-4 border-t border-black/5 dark:border-white/5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#7B61FF] animate-pulse" />
-              <span className="text-[10px] tracking-[0.2em] text-[#555555] uppercase">
+              <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase">
                 SYS_STATUS: ONLINE
               </span>
             </div>

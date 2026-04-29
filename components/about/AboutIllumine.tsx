@@ -41,26 +41,37 @@ export default function AboutIllumine() {
           <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_1px_rgba(0,0,0,1)]" />
           <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_20%,#0a0a0a_100%)]" />
 
+          {/* HUD Overlay Content */}
           <div className="absolute inset-0 z-20 p-6 md:p-12 pointer-events-none">
             <div className="flex flex-col gap-1 opacity-100">
               <div className="flex items-baseline gap-4">
-                <h2 className="text-xl md:text-3xl text-white font-black tracking-tighter drop-shadow-md">ILLUMINE 2026</h2>
+                {/* IMPROVEMENT: Enhanced main title depth */}
+                <h2 className="text-xl md:text-3xl text-white font-black tracking-tighter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">ILLUMINE 2026</h2>
 
-                <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-[9px] md:text-[11px] text-white font-bold">
-                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-500 rounded-full" /><span>SPEC.37.74</span></div>
-                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-500 rounded-full" /><span>SPEC.37.74</span></div>
-                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-500 rounded-full" /><span>343 SA</span></div>
-                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-500 rounded-full" /><span>343 SA</span></div>
+                {/* IMPROVEMENT: Enhanced status grid readability and glowing dots */}
+                <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-[9px] md:text-[11px] text-white/90 font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_6px_#6366f1]" /><span>SPEC.37.74</span></div>
+                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_6px_#6366f1]" /><span>SPEC.37.74</span></div>
+                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_6px_#6366f1]" /><span>343 SA</span></div>
+                  <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-[0_0_6px_#6366f1]" /><span>343 SA</span></div>
                 </div>
               </div>
 
-              <p className="text-xs md:text-sm text-white font-bold tracking-widest mt-1">00:02:25</p>
+              {/* IMPROVEMENT: Enhanced timer readability */}
+              <p className="text-xs md:text-sm text-white font-bold tracking-widest mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)]">00:02:25</p>
 
-              <div className="mt-4 w-48 md:w-64 h-8 md:h-10 border border-white/20 bg-white/5 relative overflow-hidden backdrop-blur-sm">
-                <div className="absolute inset-y-0 left-0 w-1/4 bg-white/30 animate-pulse" />
+              {/* IMPROVEMENT: Fully redesigned Loader Bar with multiple glow effects */}
+              <div className="mt-4 w-48 md:w-64 h-8 md:h-10 border border-white/10 bg-white/5 relative overflow-hidden backdrop-blur-[1px] shadow-[inset_0_0_10px_rgba(255,255,255,0.05),0_0_15px_rgba(165,180,252,0.1)]">
+                {/* 1. Main moving pulse - increased clarity and soft glow */}
+                <div className="absolute inset-y-0 left-0 w-1/4 bg-white/20 animate-pulse shadow-[0_0_10px_white]" />
+                
+                {/* 2. Scanning Block - now a soft indigo highlight */}
                 <div className="absolute inset-0 flex items-center px-3">
-                  <div className="w-8 h-full bg-white/40" />
+                  <div className="w-8 h-full bg-indigo-300/30 shadow-[0_0_8px_#818cf8]" />
                 </div>
+                
+                {/* 3. Subtle horizontal "energy line" for detail */}
+                <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-1/2" />
               </div>
             </div>
 

@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { mechsuit, ttLakes } from './fonts';
+import { usePathname } from 'next/navigation';
+import { mechsuit, ttLakes } from './fonts'; 
 
 const navLinks = [
   { label: 'HOME', href: '/' },
@@ -13,9 +14,11 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('HOME');
+
+  const polyClass = "[clip-path:polygon(8%_0,100%_0,100%_65%,92%_100%,0_100%,0_35%)]";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -23,188 +26,154 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <>
       <nav
-        className={[
-          'sticky top-0 left-0 right-0 z-50 transition-all duration-500',
-          ttLakes.className,
-          scrolled
-            ? 'bg-gradient-to-b from-white/80 dark:from-black/80 to-transparent backdrop-blur-md'
-            : 'bg-transparent',
-        ].join(' ')}
+        className={`sticky top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+          scrolled 
+            ? 'bg-black/80 backdrop-blur-xl border-b border-[#7B61FF]/30 shadow-[0_4px_30px_rgba(123,97,255,0.1)]' 
+            : 'bg-black' 
+        }`}
       >
-        {/* Top scanline accent */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7B61FF]/60 to-transparent" />
+        {/* Animated Gradient Scanline (Top) */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7B61FF] to-transparent animate-pulse opacity-70" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between relative">
+          
+          {/* 1. LOGO */}
+          <div className="flex-1 flex justify-start z-10">
+            <Link href="/" className={`group relative ${mechsuit.className}`}>
+              <span className="text-xl sm:text-2xl tracking-[0.25em] text-white group-hover:text-[#7B61FF] transition-all duration-300 drop-shadow-[0_0_8px_rgba(123,97,255,0)] group-hover:drop-shadow-[0_0_12px_rgba(123,97,255,0.8)]">
+                ILLUMINE
+              </span>
+              <div className="absolute -bottom-1 left-0 h-[1px] w-0 bg-[#7B61FF] group-hover:w-full transition-all duration-500 shadow-[0_0_10px_#7B61FF]" />
+            </Link>
+          </div>
 
-          {/* LOGO */}
-          <Link href="/" className="flex-shrink-0 group flex flex-col">
-            <span
-              className={[
-                'text-[1.35rem] tracking-[0.22em]',
-                'text-black dark:text-white',
-                'group-hover:text-[#7B61FF] transition-colors duration-300',
-                mechsuit.className,
-              ].join(' ')}
-            >
-              ILLUMINE
-            </span>
-            <div className="h-px w-0 group-hover:w-full bg-[#7B61FF] transition-all duration-300 mt-px" />
-          </Link>
-
-          {/* DESKTOP NAV LINKS */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* 2. DESKTOP LINKS */}
+          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 w-max z-10">
             {navLinks.map((link) => {
-              const isActive = activeLink === link.label;
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() => setActiveLink(link.label)}
-                  className={[
-                    'group relative px-4 py-1.5 text-[11px] font-medium tracking-[0.15em]',
-                    'transition-all duration-300 rounded-sm',
-                    isActive
-                      ? 'bg-[#6265fe] text-white'
-                      : 'text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white',
-                  ].join(' ')}
+                  className={`
+                    relative px-5 py-2 text-[10px] font-bold tracking-[0.2em] transition-all duration-300
+                    ${ttLakes.className} ${polyClass}
+                    ${isActive 
+                      ? 'bg-[#6265fe] text-white shadow-[0_0_20px_rgba(98,101,254,0.6)] border-t border-white/20' 
+                      : 'text-white/60 hover:text-[#7B61FF] hover:bg-[#7B61FF]/10'
+                    }
+                  `}
                 >
-                  {!isActive && (
-                    <>
-                      <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-transparent group-hover:border-[#7B61FF]/80 transition-all duration-300" />
-                      <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-transparent group-hover:border-[#7B61FF]/80 transition-all duration-300" />
-                    </>
-                  )}
                   {link.label}
                 </Link>
               );
             })}
           </div>
 
-          {/* ACTION BUTTONS */}
-          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+          {/* 3. ACTION BUTTONS */}
+          <div className="hidden lg:flex flex-1 justify-end items-center gap-5 h-9 z-10">
             <Link
               href="/login"
-              className="group relative px-5 py-1.5 text-[11px] font-medium tracking-[0.15em] bg-[#6265fe] text-white rounded-sm hover:bg-[#7B61FF] transition-colors duration-300 overflow-hidden"
+              className={`
+                relative h-full px-7 flex items-center justify-center bg-[#6265fe] 
+                text-white text-[11px] font-bold tracking-[0.2em] 
+                hover:shadow-[0_0_25px_rgba(123,97,255,0.5)] hover:scale-105 
+                active:scale-95 transition-all duration-300 ${polyClass} ${ttLakes.className}
+              `}
             >
-              <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               LOG IN
             </Link>
 
-            <Link
-              href="/signup"
-              className="group relative px-5 py-1.5 text-[11px] font-medium tracking-[0.15em] border border-black/50 dark:border-white/50 text-black dark:text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF] transition-all duration-300"
-            >
-              <span className="absolute top-0.5 left-0.5 w-[3px] h-[3px] bg-black/30 dark:bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
-              <span className="absolute bottom-0.5 right-0.5 w-[3px] h-[3px] bg-black/30 dark:bg-white/30 group-hover:bg-[#7B61FF]/80 transition-colors duration-300" />
-              SIGN UP
-            </Link>
+            <div className={`relative h-full p-[1.5px] bg-gradient-to-r from-[#7B61FF] via-[#B6BBFF] to-[#7B61FF] animate-gradient-x ${polyClass}`}>
+              <Link 
+                href="/signup"
+                className={`
+                  h-full px-7 flex items-center justify-center bg-black text-white 
+                  text-[11px] font-bold tracking-[0.2em] transition-all 
+                  hover:bg-[#7B61FF]/20 hover:text-white ${polyClass} ${ttLakes.className}
+                `}
+              >
+                SIGN UP
+              </Link>
+            </div>
           </div>
 
-          {/* MOBILE HAMBURGER */}
+          {/* MOBILE TOGGLE */}
           <button
-            type="button"
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen ? 'true' : 'false'}
-            className="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden flex flex-col gap-1.5 p-2 z-10"
           >
-            <span className={['block h-px bg-black dark:bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full rotate-45 translate-y-[6px]' : 'w-full'].join(' ')} />
-            <span className={['block h-px bg-black dark:bg-white transition-all duration-300', mobileOpen ? 'opacity-0 w-0' : 'w-3/4'].join(' ')} />
-            <span className={['block h-px bg-black dark:bg-white transition-all duration-300 origin-center', mobileOpen ? 'w-full -rotate-45 -translate-y-[6px]' : 'w-1/2'].join(' ')} />
+            <div className={`h-[2px] w-6 bg-[#7B61FF] transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''} shadow-[0_0_8px_#7B61FF]`} />
+            <div className={`h-[2px] w-4 bg-[#7B61FF] transition-all ${mobileOpen ? 'opacity-0' : 'opacity-100'}`} />
+            <div className={`h-[2px] w-6 bg-[#7B61FF] transition-all ${mobileOpen ? '-rotate-45 -translate-y-2' : ''} shadow-[0_0_8px_#7B61FF]`} />
           </button>
 
         </div>
       </nav>
 
-      {/* MOBILE MENU OVERLAY */}
-      <div
-        className={[
-          'sticky inset-0 z-40 transition-all duration-300 md:hidden',
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
-        ].join(' ')}
-      >
-        <div
-          className="absolute inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-md"
-          onClick={() => setMobileOpen(false)}
-        />
+      {/* MOBILE OVERLAY */}
+      <div className={`fixed inset-0 z-[90] lg:hidden transition-all duration-700 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="absolute inset-0 bg-black/95 backdrop-blur-3xl border-l border-[#7B61FF]/30" />
+        
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-        <div
-          className={[
-            'absolute top-16 left-0 right-0 bg-white/90 dark:bg-black/90 border-b border-black/10 dark:border-white/10',
-            'transition-transform duration-300',
-            ttLakes.className,
-            mobileOpen ? 'translate-y-0' : '-translate-y-2',
-          ].join(' ')}
-        >
-          <div className="h-px bg-gradient-to-r from-transparent via-[#7B61FF]/50 to-transparent" />
-
-          <div className="px-6 py-6 flex flex-col gap-1">
-            <p className="text-[10px] tracking-[0.25em] text-gray-500 uppercase mb-3">
-              {'>> /root/nav_links'}
-            </p>
-
-            {navLinks.map((link, i) => {
-              const isActive = activeLink === link.label;
-              return (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => {
-                    setActiveLink(link.label);
-                    setMobileOpen(false);
-                  }}
-                  className={[
-                    'flex items-center gap-3 py-3 border-b border-black/5 dark:border-white/5',
-                    'text-sm tracking-[0.12em] transition-colors duration-200',
-                    isActive ? 'text-[#7B61FF]' : 'text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white',
-                  ].join(' ')}
-                >
-                  <span className="text-gray-400 text-xs font-mono w-5">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  {link.label}
-                  {isActive && (
-                    <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#7B61FF] animate-pulse" />
-                  )}
-                </Link>
-              );
-            })}
-
-            <div className="flex gap-3 mt-5">
-              <Link
-                href="/login"
-                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium bg-[#6265fe] text-white rounded-sm hover:bg-[#7B61FF]"
-              >
-                LOG IN
-              </Link>
-              <Link
-                href="/signup"
-                className="flex-1 py-2.5 text-center text-[11px] tracking-[0.15em] font-medium border border-black/40 dark:border-white/40 text-black dark:text-white rounded-sm hover:border-[#7B61FF] hover:text-[#7B61FF]"
-              >
-                SIGN UP
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-2 mt-5 pt-4 border-t border-black/5 dark:border-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#7B61FF] animate-pulse" />
-              <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase">
-                SYS_STATUS: ONLINE
+        <div className="relative h-full flex flex-col justify-center items-end pr-12 gap-8">
+          
+          {navLinks.map((link, i) => (
+            <Link 
+              key={link.label} 
+              href={link.href} 
+              onClick={() => setMobileOpen(false)}
+              className="group text-right"
+            >
+              <span className="block text-[10px] text-[#7B61FF] font-mono tracking-widest opacity-50">SECTION_0{i+1}</span>
+              <span className={`text-3xl font-bold tracking-tighter text-white group-hover:text-[#7B61FF] transition-colors ${ttLakes.className}`}>
+                {link.label}
               </span>
-            </div>
-          </div>
+            </Link>
+          ))}
+
+          <div className="w-1/2 h-[1px] bg-gradient-to-l from-[#7B61FF]/50 to-transparent my-2" />
+
+          <Link 
+            href="/login" 
+            onClick={() => setMobileOpen(false)}
+            className="group text-right mt-2"
+          >
+            <span className="block text-[10px] text-[#7B61FF] font-mono tracking-widest opacity-50">AUTH_REQ</span>
+            <span className={`text-2xl font-bold tracking-tighter text-white/70 group-hover:text-[#7B61FF] transition-colors ${ttLakes.className}`}>
+              LOG IN
+            </span>
+          </Link>
+          
+          <Link 
+            href="/signup" 
+            onClick={() => setMobileOpen(false)}
+            className="group text-right"
+          >
+            <span className="block text-[10px] text-[#7B61FF] font-mono tracking-widest opacity-50">SYS_ENTRY</span>
+            <span className={`text-2xl font-bold tracking-tighter text-[#7B61FF] group-hover:text-white transition-colors ${ttLakes.className}`}>
+              SIGN UP
+            </span>
+          </Link>
+
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes gradient-x {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 3s linear infinite;
+        }
+      `}</style>
     </>
   );
 }

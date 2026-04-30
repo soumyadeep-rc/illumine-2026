@@ -7,10 +7,10 @@ import { mechsuit, ttLakes } from './fonts';
 
 const navLinks = [
   { label: 'HOME', href: '/' },
-  { label: 'ABOUT', href: '/about' },
+  { label: 'ABOUT', href: '/#about-illumine' },
   { label: 'MAGAZINE', href: '/magazine' },
   { label: 'ALUMNI', href: '/alumni' },
-  { label: 'CONTACT US', href: '/contact-us' },
+  { label: 'CONTACT US', href: '/#footer' },
 ];
 
 export default function Navbar() {
@@ -73,7 +73,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* 3. ACTION BUTTONS */}
+           {/* 3. ACTION BUTTONS (COMMENTED OUT) 
           <div className="hidden lg:flex flex-1 justify-end items-center gap-5 h-9 z-10">
             <Link
               href="/login"
@@ -85,7 +85,7 @@ export default function Navbar() {
               `}
             >
               LOG IN
-            </Link>
+            </Link> 
 
             <div className={`relative h-full p-[1.5px] bg-gradient-to-r from-[#7B61FF] via-[#B6BBFF] to-[#7B61FF] animate-gradient-x ${polyClass}`}>
               <Link 
@@ -100,6 +100,7 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
+          */}
 
           {/* MOBILE TOGGLE */}
           <button
@@ -114,7 +115,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE OVERLAY */}
+      {/* MOBILE OVERLAY */} 
       <div className={`fixed inset-0 z-[90] lg:hidden transition-all duration-700 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="absolute inset-0 bg-black/95 backdrop-blur-3xl border-l border-[#7B61FF]/30" />
         
@@ -136,6 +137,7 @@ export default function Navbar() {
             </Link>
           ))}
 
+          {/* MOBILE AUTH BUTTONS & DIVIDER (COMMENTED OUT) 
           <div className="w-1/2 h-[1px] bg-gradient-to-l from-[#7B61FF]/50 to-transparent my-2" />
 
           <Link 
@@ -159,6 +161,7 @@ export default function Navbar() {
               SIGN UP
             </span>
           </Link>
+          */}
 
         </div>
       </div>

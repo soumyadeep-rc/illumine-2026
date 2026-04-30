@@ -5,7 +5,7 @@ import { svgPaths } from '../../data/aboutilluminepaths';
 
 export default function AboutIllumine() {
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-center justify-center p-2 md:p-6 font-mono">
+    <div id='about-illumine'  className="relative min-h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-center justify-center p-2 md:p-6 font-mono">
       <div className="relative z-10 w-full max-w-7xl h-[92vh] md:h-[95vh] flex flex-col transition-all duration-500">
         <div className="w-full flex flex-col items-center shrink-0 mb-4">
           <div className="relative z-30 -mb-4 md:-mb-6">

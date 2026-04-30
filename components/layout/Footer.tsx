@@ -21,7 +21,7 @@ const ttLakes = localFont({
 
 const Footer = () => {
   return (
-    <footer className={`relative w-full bg-black/60 backdrop-blur-xl text-white border-t border-white/10 overflow-hidden ${ttLakes.className}`}>
+    <footer id="footer" className={`relative w-full bg-black/60 backdrop-blur-xl text-white border-t border-white/10 overflow-hidden ${ttLakes.className}`}>
       
       {/* Subtle top gradient fade */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#111111]/30 to-black/80 pointer-events-none -z-10"></div>
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className="flex flex-col space-y-4 border-b border-white/10 pb-6 md:border-b-0 md:pb-0 lg:border-r lg:border-white/5 lg:pr-4">
           
           {/* Restored pure text logo with Mechsuit */}
-          <h2 className={`text-3xl sm:text-4xl tracking-wider text-[#FFFFFF] ${mechsuit.className}`}>
+          <h2 className={`text-3xl sm:text-2xl tracking-wider text-[#FFFFFF] ${mechsuit.className}`}>
             ILLUMINE
           </h2>
           

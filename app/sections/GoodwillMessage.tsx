@@ -13,7 +13,7 @@ const GoodwillMessage: React.FC = () => {
 
   return (
     <section id="goodwill-message" className={styles.section}>
-      <div className={styles.targetGraphic} aria-hidden="true">
+      <div className={styles.targetGraphic} aria-hidden="true" >
         <svg className={styles.targetSvg} width="511" height="766" viewBox="0 0 511 766" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5" clipPath="url(#clip0_162_156)">
 <path opacity="0.4" d="M233.352 467.35C221.885 446.953 214.595 424.219 212.125 400.944L215.111 400.625C217.54 423.491 224.704 445.837 235.974 465.88L233.352 467.35Z" fill="white" fillOpacity="0.25"/>

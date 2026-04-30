@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation' // <-- Added import
 import HeroBg from '@/public/photos/Hero/hero.png'
 import { buttonClipPath } from '@/data/Paths/heroPaths'
 import DecryptedText from '@/components/ui/DecryptedText'
@@ -15,6 +16,8 @@ import VtLine from '@/components/ui/VtLine'
 import TerminalText from '@/components/ui/TerminalText'
 
 const Hero: React.FC = () => {
+    const router = useRouter() // <-- Initialized router
+
     return (
         <div className='h-screen w-full relative flex flex-col justify-center items-center gap-4'>
             <Image
@@ -36,7 +39,8 @@ const Hero: React.FC = () => {
             <div className='w-[60%] sm:w-[40%] lg:w-[27%] relative z-10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 sm:h-[8%]'>
 
                 <button
-                    className="font-tt-lakes font-medium h-10 w-full sm:h-[80%] sm:w-[40%] bg-[#6265fe] text-white text-xs sm:text-sm border-none"
+                    onClick={() => router.push('/events')} // <-- Added onClick
+                    className="font-tt-lakes font-medium h-10 w-full sm:h-[80%] sm:w-[40%] bg-[#6265fe] text-white text-xs sm:text-sm border-none hover:bg-[#7b7efe] transition-colors cursor-pointer"
                     style={{ clipPath: buttonClipPath }}
                 >
                     <DecryptedText text='EVENTS' animateOn='view' speed={250} />
@@ -47,7 +51,10 @@ const Hero: React.FC = () => {
                     style={{ clipPath: buttonClipPath }}
                 >
                     <div className="absolute inset-0 border-4 border-white pointer-events-none" />
-                    <button className="font-tt-lakes font-medium w-full h-full bg-transparent text-white text-xs sm:text-sm">
+                    <button 
+                        onClick={() => router.push('/magazine')} // <-- Added onClick
+                        className="font-tt-lakes font-medium w-full h-full bg-transparent text-white text-xs sm:text-sm hover:bg-white/10 transition-colors cursor-pointer"
+                    >
                         <DecryptedText text='MAGAZINE' animateOn='view' speed={250} />
                     </button>
                 </div>
@@ -70,7 +77,7 @@ const Hero: React.FC = () => {
                 speed={500}
             />
 
-            <div className='w-full h-full inset-0 absolute'>
+            <div className='w-full h-full inset-0 absolute pointer-events-none'>
                 <Plus className='top-[15%] left-[25%]' delay={0.2} />
                 <Plus className='top-[15%] left-[75%]' delay={0.6} />
                 <Plus className='top-[15%] right-[5%]' delay={1.0} />

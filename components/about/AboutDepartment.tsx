@@ -27,7 +27,7 @@ export default function AboutDepartment() {
             <Cross style={{ bottom: '10%', right: '25%' }} />
             <Cross style={{ top: '45%', right: '5%' }} />
 
-            <h1 className="font-mechsuit text-3xl lg:text-5xl xl:text-[3.5vw] text-[#C4CCFF] drop-shadow-[0_0_12px_rgba(196,204,255,0.4)] tracking-widest z-10 mb-16 text-center">
+            <h1 className="font-mechsuit text-2xl lg:text-2xl xl:text-[2.5vw] text-[#C4CCFF] drop-shadow-[0_0_12px_rgba(196,204,255,0.4)] tracking-widest z-10 mb-16 text-center">
                 ABOUT THE DEPARTMENT
             </h1>
 

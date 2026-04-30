@@ -8,6 +8,7 @@ import Vector5 from '@/assets/coming_soon_svgs/svg/Vector5';
 import Svg60_50 from '@/assets/coming_soon_svgs/svg/Svg60_50';
 import Group95 from '@/assets/coming_soon_svgs/svg/Group95';
 import Rectangle70 from '@/assets/coming_soon_svgs/svg/Rectangle70';
+import DecryptedText from '@/components/ui/DecryptedText';
 
 const Cross = ({ style, className }: { style?: React.CSSProperties, className?: string }) => (
     <div className={`absolute aspect-square opacity-60 ${className || ''}`} style={{ width: '1.25vw', ...style }}>
@@ -18,7 +19,7 @@ const Cross = ({ style, className }: { style?: React.CSSProperties, className?: 
 
 export default function AboutDepartment() {
     return (
-        <div className="relative w-full min-h-screen bg-[#111111] overflow-hidden flex flex-col items-center justify-center font-tt-lakes text-white py-24 select-none">
+        <div className="relative w-full min-h-screen bg-black/40 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center font-tt-lakes text-white py-24 select-none">
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
 
             <Cross style={{ top: '8%', left: '8%' }} />
@@ -28,7 +29,13 @@ export default function AboutDepartment() {
             <Cross style={{ top: '45%', right: '5%' }} />
 
             <h1 className="font-mechsuit text-2xl lg:text-2xl xl:text-[2.5vw] text-[#C4CCFF] drop-shadow-[0_0_12px_rgba(196,204,255,0.4)] tracking-widest z-10 mb-16 text-center">
-                ABOUT THE DEPARTMENT
+                <DecryptedText 
+                    text="ABOUT THE DEPARTMENT" 
+                    animateOn="view" 
+                    speed={60} 
+                    sequential={true} 
+                    revealDirection="start"
+                />
             </h1>
 
             <div className="relative w-[90vw] max-w-[1200px] h-auto min-h-[700px] lg:min-h-[600px] lg:h-[600px] mt-8 z-10">
@@ -75,7 +82,7 @@ export default function AboutDepartment() {
                 </div>
 
                 <div
-                    className="w-full h-full min-h-[700px] lg:min-h-[600px] relative bg-[#111] flex flex-col lg:flex-row overflow-hidden z-10 [clip-path:polygon(40px_0,160px_0,180px_25px,100%_25px,100%_100%,40px_100%,0_calc(100%-30px),0_30px)] lg:[clip-path:polygon(80px_0,320px_0,350px_45px,100%_45px,100%_100%,80px_100%,0_calc(100%-55px),0_55px)]"
+                    className="w-full h-full min-h-[700px] lg:min-h-[600px] relative bg-black/60 flex flex-col lg:flex-row overflow-hidden z-10 [clip-path:polygon(40px_0,160px_0,180px_25px,100%_25px,100%_100%,40px_100%,0_calc(100%-30px),0_30px)] lg:[clip-path:polygon(80px_0,320px_0,350px_45px,100%_45px,100%_100%,80px_100%,0_calc(100%-55px),0_55px)]"
                 >
                     <div className="relative w-full lg:w-[60%] h-[40%] lg:h-full shrink-0 z-20 bg-black">
                         <Image
@@ -91,9 +98,24 @@ export default function AboutDepartment() {
 
                     <div className="relative w-full lg:w-[40%] h-[60%] lg:h-full p-6 lg:p-10 flex flex-col justify-center text-right z-30">
                         <div className="w-full max-w-[380px] ml-auto">
-                            <div className="text-[#BEF3DF] text-[15px] mb-1 font-normal text-right">About our Department</div>
+                            
+                            <div className="text-[#BEF3DF] text-[15px] mb-1 font-normal text-right">
+                                <DecryptedText 
+                                    text="About our Department" 
+                                    animateOn="view" 
+                                    speed={40} 
+                                    sequential={true}
+                                />
+                            </div>
+
                             <p className="text-[#BEF3DF] text-[13px] lg:text-[14px] leading-[1.8] font-light text-right">
-                                Illumine is a biennial reunion event organized by the Department of Information Technology at Jadavpur University. Held every two years, this gathering brings together alumni, current students, and faculty members to celebrate the department's achievements and foster connections within the IT community. Illumine provides a unique platform for former students to reconnect with old friends and mentors, share their career experiences, and contribute to the ongoing development of the department. It also offers current students' valuable opportunities to gain insights from alumni, explore potential career paths, and engage with the broader IT professional community. With its focus on celebrating the department's legacy and future, Illumine is a significant and anticipated occasion for all involved. This time we intend to make the reunion even more special and grand since this year marks the Silver Jubilee of our department.
+                                <DecryptedText 
+                                    text="Illumine is a biennial reunion event organized by the Department of Information Technology at Jadavpur University. Held every two years, this gathering brings together alumni, current students, and faculty members to celebrate the department's achievements and foster connections within the IT community. Illumine provides a unique platform for former students to reconnect with old friends and mentors, share their career experiences, and contribute to the ongoing development of the department. It also offers current students' valuable opportunities to gain insights from alumni, explore potential career paths, and engage with the broader IT professional community. With its focus on celebrating the department's legacy and future, Illumine is a significant and anticipated occasion for all involved. This time we intend to make the reunion even more special and grand since this year marks the Silver Jubilee of our department." 
+                                    animateOn="view" 
+                                    speed={12}           
+                                    maxIterations={15}   
+                                    sequential={false}   
+                                />
                             </p>
                         </div>
                     </div>

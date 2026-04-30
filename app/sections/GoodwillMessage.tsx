@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { professors, sectionTitle } from '@/data/goodwillData'
 import type { ProfessorData } from '@/data/goodwillData'
 import BigCircle from '@/components/ui/BigCircle'
+import DecryptedText from '@/components/ui/DecryptedText'
 import styles from './GoodwillMessage.module.css'
 
 const GoodwillMessage: React.FC = () => {
@@ -288,7 +289,15 @@ const GoodwillMessage: React.FC = () => {
       </div>
 
       <div className={styles.titleContainer}>
-        <h2 className={styles.title}>{sectionTitle}</h2>
+        <h2 className={styles.title}>
+          <DecryptedText 
+            text={sectionTitle} 
+            animateOn="view" 
+            speed={60} 
+            sequential={true} 
+            revealDirection="start"
+          />
+        </h2>
         <div className={styles.accentBar} aria-hidden="true" />
       </div>
 
@@ -314,7 +323,7 @@ const GoodwillMessage: React.FC = () => {
                   <path d="M41.3789 85.8292C41.3789 66.8912 56.7293 51.5343 75.6739 51.5343C93.6841 51.5343 108.446 65.4209 109.845 83.0715H135.926C134.488 51.0376 108.067 25.5059 75.6739 25.5059C42.3591 25.5059 15.3506 52.5145 15.3506 85.8292C15.3506 102.068 21.7808 116.804 32.2235 127.646L50.6259 109.237C44.8948 103.114 41.3789 94.8866 41.3789 85.8292Z" fill="white" fill-opacity="0.4"/>
                 </g>
                 <g opacity="0.15">
-                  <path d="M109.859 88.4238C108.532 106.153 93.7372 120.124 75.6748 120.124C66.7482 120.124 58.6254 116.713 52.5218 111.126L34.1196 129.535C44.9414 139.827 59.5664 146.153 75.6748 146.153C108.121 146.153 134.574 120.536 135.933 88.4238H109.859Z" fill="white" fill-opacity="0.15"/>
+                  <path d="M109.859 88.4238C108.532 106.153 93.7372 120.124 75.6748 120.124C66.7482 120.124 58.6254 116.713 52.5218 111.126L34.1196 129.535C44.9414 139.827 59.5664 146.153 75.6748 146.153C108.121 146.153 134.574 120.536 135.933 88.4238H109.859Z" fill="white" fillOpacity="0.15"/>
                 </g>
                 <path d="M96.1088 29.061L87.2867 53.5602C93.5341 55.8082 98.9385 59.8207 102.899 65.0028L123.555 49.1558C116.589 40.0658 107.087 33.0146 96.1088 29.061Z" fill="white"/>
               </g>
@@ -322,12 +331,12 @@ const GoodwillMessage: React.FC = () => {
                 <path d="M133.848 90.3838C132.75 104.662 126.49 117.928 116.099 127.914C105.18 138.409 90.8224 144.192 75.6745 144.192C61.3239 144.192 47.6464 138.977 36.9488 129.475L52.6129 113.805C59.0955 119.157 67.2118 122.084 75.6745 122.084C93.9199 122.084 109.375 108.302 111.629 90.3838H133.848ZM135.933 88.4233H109.865C108.538 106.152 93.7435 120.124 75.6811 120.124C66.7544 120.124 58.6316 116.713 52.528 111.126L34.1259 129.534C44.9476 139.827 59.5726 146.152 75.6811 146.152C108.12 146.152 134.573 120.536 135.933 88.4233Z" fill="white" fill-opacity="0.15"/>
               </g>
               <g opacity="0.35">
-                <path d="M75.6734 0V6.40416C119.496 6.40416 155.02 41.9277 155.02 85.7505C155.02 129.573 119.496 165.097 75.6734 165.097C57.9443 165.097 41.5744 159.281 28.3675 149.452L24.551 154.595C38.8297 165.215 56.5197 171.501 75.6799 171.501C123.038 171.501 161.431 133.109 161.431 85.7505C161.424 38.3923 123.032 0 75.6734 0Z" fill="white" fill-opacity="0.15"/>
+                <path d="M75.6734 0V6.40416C119.496 6.40416 155.02 41.9277 155.02 85.7505C155.02 129.573 119.496 165.097 75.6734 165.097C57.9443 165.097 41.5744 159.281 28.3675 149.452L24.551 154.595C38.8297 165.215 56.5197 171.501 75.6799 171.501C123.038 171.501 161.431 133.109 161.431 85.7505C161.424 38.3923 123.032 0 75.6734 0Z" fill="white" fillOpacity="0.15"/>
               </g>
               <path d="M126.993 17.0494C112.682 6.34534 94.92 0 75.6748 0V6.40416C93.4824 6.40416 109.924 12.2725 123.164 22.1793L126.993 17.0494Z" fill="white"/>
               <path d="M25.2354 147.04L21.2039 151.999L21.9999 152.646L26.0314 147.687L25.2354 147.04Z" fill="white" fill-opacity="0.15"/>
               <g opacity="0.8">
-                <path d="M75.6413 161.392C33.9291 161.392 0 127.456 0 85.7506C0 72.8508 3.30657 60.1144 9.55391 48.9201L11.2661 49.8742C5.17562 60.7809 1.96046 73.1841 1.96046 85.7506C1.96046 126.378 35.0139 159.431 75.6413 159.431C116.269 159.431 149.322 126.378 149.322 85.7506C149.322 72.8312 145.93 60.1209 139.513 48.9985L141.212 48.0183C147.799 59.4413 151.283 72.4914 151.283 85.7506C151.283 127.456 117.347 161.392 75.6413 161.392Z" fill="white" fill-opacity="0.15"/>
+                <path d="M75.6413 161.392C33.9291 161.392 0 127.456 0 85.7506C0 72.8508 3.30657 60.1144 9.55391 48.9201L11.2661 49.8742C5.17562 60.7809 1.96046 73.1841 1.96046 85.7506C1.96046 126.378 35.0139 159.431 75.6413 159.431C116.269 159.431 149.322 126.378 149.322 85.7506C149.322 72.8312 145.93 60.1209 139.513 48.9985L141.212 48.0183C147.799 59.4413 151.283 72.4914 151.283 85.7506C151.283 127.456 117.347 161.392 75.6413 161.392Z" fill="white" fillOpacity="0.15"/>
               </g>
             </svg>
 
@@ -504,9 +513,26 @@ const GoodwillMessage: React.FC = () => {
           </div>
 
           <div className={styles.profInfo}>
-            <h3 className={styles.profName}>{activeProfessor.name}</h3>
+            <h3 className={styles.profName}>
+              <DecryptedText 
+                key={`name-${activeIndex}`}
+                text={activeProfessor.name} 
+                animateOn="view" 
+                speed={40} 
+                sequential={true}
+              />
+            </h3>
+            
             {activeProfessor.designation.map((line, i) => (
-              <span key={i} className={styles.profDesignation}>{line}</span>
+              <span key={i} className={styles.profDesignation}>
+                <DecryptedText 
+                  key={`desig-${activeIndex}-${i}`} 
+                  text={line} 
+                  animateOn="view" 
+                  speed={30} 
+                  sequential={true}
+                />
+              </span>
             ))}
           </div>
         </div>
@@ -514,7 +540,14 @@ const GoodwillMessage: React.FC = () => {
         <div className={styles.messageContent}>
           {activeProfessor.message.split('\n').map((paragraph, i) => (
             <p key={i} className={i === 0 ? styles.messageHeading : styles.messageParagraph}>
-              {paragraph}
+              <DecryptedText 
+                key={`msg-${activeIndex}-${i}`} 
+                text={paragraph} 
+                animateOn="view" 
+                speed={12} 
+                maxIterations={15} 
+                sequential={false}
+              />
             </p>
           ))}
         </div>

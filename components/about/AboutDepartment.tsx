@@ -36,6 +36,7 @@ export default function AboutDepartment() {
                     sequential={true} 
                     revealDirection="start"
                 />
+                ABOUT THE DEPARTMENT
             </h1>
 
             <div className="relative w-[90vw] max-w-[1200px] h-auto min-h-[700px] lg:min-h-[600px] lg:h-[600px] mt-8 z-10">
